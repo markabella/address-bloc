@@ -10,11 +10,14 @@
    def main_menu
      
      puts "Main Menu - #{address_book.entries.count} entries"
+    
      puts "1 - View all entries"
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View Entry Number n"
+     puts "6 - Exit"
+     
      print "Enter your selection: "
  
      selection = gets.to_i
@@ -38,8 +41,11 @@
      read_csv
      main_menu
     when 5
+     system "clear"
+     view_entry
+     main_menu
+    when 6
      puts "Good-bye"
-   
      exit(0)
    
     else
@@ -58,6 +64,17 @@
  
      system "clear"
      puts "End of entries"
+   end
+   
+   def view_entry
+     print "Choose an entry number between 0 and #{address_book.entries.count-1} to display: "
+     entry_num = gets.chomp.to_i
+      if entry_num < address_book.entries.count
+        puts address_book.entries[entry_num]
+      else
+         puts "#{entry_num} is not a valid input"
+         view_entry
+      end
    end
  
    def create_entry
