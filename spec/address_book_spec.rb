@@ -108,7 +108,7 @@
        check_entry(entry, "Bill", "555-555-4854", "bill@blocmail.com")
      end
      
-          it "searches AddressBook for Bob" do
+     it "searches AddressBook for Bob" do
        book.import_from_csv("entries.csv")
        entry = book.binary_search("Bob")
        expect(entry).to be_a Entry
@@ -142,5 +142,15 @@
        expect(entry).to be_nil
      end
    end
-
+   
+   #Test the nuke method
+    describe "#nuke" do
+     it "erases all entries in AddressBook" do
+       book.import_from_csv("entries.csv")
+       expect(book.entries.size).to eq(5)
+       book.nuke
+       expect(book.entries.size).to eq(0)
+     end
+   end
+    
  end

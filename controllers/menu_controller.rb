@@ -41,6 +41,7 @@
     when 5
      system "clear"
      nuke
+     puts "All entries have been deleted"
      main_menu
 
     when 6
@@ -193,11 +194,6 @@
 
      puts "Updated entry:"
      puts entry
-   end
-   
-   def nuke
-     address_book.entries.clear
-     puts "All entries have been deleted"
    end
    
  end
